@@ -1,0 +1,22 @@
+{
+    "num_of_nodes" : 3,
+    "seed_name" : "node1",
+    "node" :
+    [
+        {
+            "name" : "node1",
+            "ip" : "127.0.0.1",
+            "port" : 6170
+        },
+        {
+            "name" : "node2",
+            "ip" : "127.0.0.1",
+            "port" : 6180
+        },
+        {
+            "name" : "node3",
+            "ip" : "127.0.0.1",
+            "port" : 6190
+        }
+    ]
+}

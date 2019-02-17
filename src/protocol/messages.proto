@@ -1,0 +1,71 @@
+package paxos;
+
+message Data
+{
+    required int32 input = 1;
+    required string node_name = 2;
+}
+
+message Ballot {
+    required int32 number = 1;
+}
+
+message AcceptorMsg
+{
+    required ReceivedMsg discriminator = 1;
+    enum ReceivedMsg {
+        Join = 0;
+        Prepare = 1;
+        Accept = 2;
+    }
+    optional Join join = 2;
+    optional Prepare prepare = 3;
+    optional Accept accept = 4;
+}
+
+message ProposerMsg
+{
+    required ReceivedMsg discriminator = 1;
+    enum ReceivedMsg {
+        Welcome = 0;
+        Promise = 1;
+        Accepted = 2;
+        Preempted = 3;
+    }
+    optional Welcome welcome = 2;
+    optional Promise promise = 3;
+    optional Accepted accepted = 4;
+    optional Preempted preempted = 5;
+}
+
+message Join {
+    required string name = 1;
+}
+
+message Welcome {
+    required Ballot current = 2;
+    required Data value = 3;
+}
+
+message Prepare {
+    required Ballot proposed = 1;
+}
+
+message Promise {
+    required Ballot promised = 1;
+    optional Data value = 2;
+}
+
+message Preempted {
+    required Ballot promised = 1;
+    optional Data value = 2;
+}
+
+message Accept {
+    required Ballot ballot = 1;
+    required Data value = 2;
+}
+
+message Accepted {
+    required Ballot ballot = 1;
+}
