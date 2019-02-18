@@ -64,7 +64,7 @@ Example:
     ]
 }
 ```
-#Example output
+# Example output
 
 ```console
 ./Paxos ../config/network_topology.json node1
